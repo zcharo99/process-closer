@@ -8,6 +8,7 @@ BOOL APIENTRY DllMain( HMODULE hModule,
                        [[maybe_unused]] LPVOID lpReserved
                      )
 {
+    HANDLE hConsole;
     switch (ul_reason_for_call)
     {
     case DLL_PROCESS_ATTACH:
@@ -19,7 +20,7 @@ BOOL APIENTRY DllMain( HMODULE hModule,
         AllocConsole();
 
         // handle to the console
-        HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+        hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
         // print closing message
         std::cout << "closing in 2 seconds" << std::endl;
